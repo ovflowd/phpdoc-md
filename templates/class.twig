@@ -40,12 +40,11 @@ Constants
 
 ### {{ constant.name }}
 
-    {{ constant.signature|raw }}
-
 {{ property.description|raw }}
 
-{% if constant.deprecated %}* **Warning:** this constant is **deprecated**. This means that this constant will likely be removed in a future version.
-{% endif %}
+```php
+{{ constant.signature|raw }}
+```
 
 {% endfor %}
 
@@ -58,13 +57,14 @@ Properties
 
 ### {{ property.name }}
 
-    {{ property.signature|raw }}
-
 {{ property.description|raw }}
 
+```php
+{{ property.signature|raw }}
+```
+
+#### Details:
 * Visibility: **{{ property.visibility }}**
-{% if property.deprecated %}* **Warning:** this property is **deprecated**. This means that this property will likely be removed in a future version.
-{% endif %}
 {% if property.static %}* This property is **static**.
 {% endif %}
 {% if property.definedBy != className %}* This property is defined by {{ property.definedBy|classLink }}
@@ -81,10 +81,13 @@ Methods
 
 ### {{ method.name }}
 
-    {{ method.signature|raw }}
-
 {{ method.description|raw }}
 
+```php
+{{ method.signature|raw }}
+```
+
+#### Details:
 * Visibility: **{{ method.visibility }}**
 {% if method.abstract %}* This method is **abstract**.
 {% endif %}
@@ -97,9 +100,12 @@ Methods
 
 
 {% if method.arguments %}
-#### Arguments
+#### Parameters:
 {% for argument in method.arguments %}
-* {{ argument.name }} **{% if argument.type %}{{ argument.type|classLink }}{% else %}mixed{% endif %}**{% if argument.description %} - {{ argument.description }}{% endif %}
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| {{ argument.name }} | {% if argument.type %}{{ argument.type|classLink }}{% else %}mixed{% endif %} | {% if argument.description %} - {{ argument.description }}{% endif %} |
 
 {% endfor %}
 
