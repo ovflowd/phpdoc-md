@@ -153,7 +153,7 @@ class Parser
                     }
 
                     if ((string)$tag['description']) {
-                        $nArgument['description'] = str_replace(array('<p>', '</p>'), '', (string)$tag['description']);
+                        $nArgument['description'] = str_replace(array('<p>', '</p>', '- ', '<b>', '</b>', '**'), '', (string)$tag['description']);
                     }
 
                     if ((string)$tag['variable']) {
@@ -165,10 +165,10 @@ class Parser
             }
 
             $argumentStr = implode(', ', array_map(function($argument) {
-                $return = $argument['name'];
+                $return = str_replace('- ', '', $argument['name']);
 
                 if ($argument['type']) {
-                    $return = $argument['type'] . ' ' . $return;
+                    $return = str_replace(array('**', '<b>', '</b>', '', $argument['type'] . ' ' . $return);
                 }
 
                 return $return;
