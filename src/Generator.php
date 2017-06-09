@@ -182,7 +182,7 @@ class Generator
             }
 
             if (!isset($classDefinitions[$oneClass])) {
-                $returnedClasses[] = "**{$oneClass}";
+                $returnedClasses[] = "**{$oneClass}**";
             } else {
                 $link = str_replace('\\', '-', $oneClass);
                 $link = strtr($linkTemplate, ['%c' => $link]);
