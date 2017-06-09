@@ -137,7 +137,7 @@ class Parser
 
             foreach ($method->argument as $argument) {
                 $nArgument = [
-                    'type' => (string)$argument->type,
+                    'type' => str_replace('|', ' or ', (string)$argument->type),
                     'name' => (string)$argument->name
                 ];
 
@@ -149,7 +149,7 @@ class Parser
                     $tag = $tags[0];
 
                     if ((string)$tag['type']) {
-                        $nArgument['type'] = (string)$tag['type'];
+                        $nArgument['type'] = str_replace('|', ' or ', (string)$tag['type']);
                     }
 
                     if ((string)$tag['description']) {
