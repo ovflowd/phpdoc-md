@@ -168,7 +168,7 @@ class Parser
                 $return = str_replace('- ', '', $argument['name']);
 
                 if ($argument['type']) {
-                    $return = str_replace(array('**', '<b>', '</b>', '', $argument['type'] . ' ' . $return);
+                    $return = str_replace(array('**', '<b>', '</b>'), '', $argument['type'] . ' ' . $return);
                 }
 
                 return $return;
