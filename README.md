@@ -1,5 +1,5 @@
-PHPDocumentor MarkDown export
-=============================
+phpDoc Markdown Generator
+=========================
 
 This is a script that can generate markdown (.md) files for your API
 documentation.
@@ -20,15 +20,12 @@ This project assumes you have composer installed.
 Simply add:
 
     "require-dev" : {
-
         "evert/phpdoc-md" : "~0.2.0"
-
     }
 
 To your composer.json, and then you can simply install with:
 
     composer install
-
 
 Usage
 -----
