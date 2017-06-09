@@ -88,7 +88,7 @@ class Parser
                 'className'       => $className,
                 'shortClass'      => (string)$class->name,
                 'namespace'       => (string)$class['namespace'],
-                'description'     => (string)$class->docblock->description,
+                'description'     => str_replace(array('<p>', '</p>'), '', (string)$class->docblock->description),
                 'longDescription' => (string)$class->docblock->{'long-description'},
                 'implements'      => $implements,
                 'extends'         => $extends,
@@ -153,7 +153,7 @@ class Parser
                     }
 
                     if ((string)$tag['description']) {
-                        $nArgument['description'] = (string)$tag['description'];
+                        $nArgument['description'] = str_replace(array('<p>', '</p>'), '', (string)$tag['description']);
                     }
 
                     if ((string)$tag['variable']) {
@@ -178,7 +178,7 @@ class Parser
 
             $methods[$methodName] = [
                 'name'        => $methodName,
-                'description' => (string)$method->docblock->description . "\n\n" . (string)$method->docblock->{'long-description'},
+                'description' => str_replace(array('<p>', '</p>'), '', (string)$method->docblock->description . "\n\n" . (string)$method->docblock->{'long-description'}),
                 'visibility'  => (string)$method['visibility'],
                 'abstract'    => ((string)$method['abstract']) == "true",
                 'static'      => ((string)$method['static']) == "true",
@@ -231,7 +231,7 @@ class Parser
                 'name'        => $propName,
                 'type'        => $type,
                 'default'     => $default,
-                'description' => (string)$xProperty->docblock->description . "\n\n" . (string)$xProperty->docblock->{'long-description'},
+                'description' => str_replace(array('<p>', '</p>'), '', (string)$xProperty->docblock->description . "\n\n" . (string)$xProperty->docblock->{'long-description'}),
                 'visibility'  => $visibility,
                 'static'      => ((string)$xProperty['static']) == 'true',
                 'signature'   => $signature,
@@ -268,7 +268,7 @@ class Parser
 
             $constants[$name] = [
                 'name'        => $name,
-                'description' => (string)$xConstant->docblock->description . "\n\n" . (string)$xConstant->docblock->{'long-description'},
+                'description' => str_replace(array('<p>', '</p>'), '', (string)$xConstant->docblock->description . "\n\n" . (string)$xConstant->docblock->{'long-description'}),
                 'signature'   => $signature,
                 'value'       => $value,
                 'deprecated'  => count($class->xpath('docblock/tag[@name="deprecated"]')) > 0,
