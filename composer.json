@@ -9,7 +9,7 @@
         "twig/twig" : "~1.2|2.0"
     },
     "require-dev" : {
-        "phpdocumentor/phpdocumentor" : "~2.8.0",
+        "phpdocumentor/phpdocumentor" : "~2.9.0",
         "sabre/cs"                    : "~0.0.5"
     },
     "authors" : [
